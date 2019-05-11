@@ -3,7 +3,10 @@ package com.SingleLevelInheritance;
 public class DelhiPublicSchool extends School{
 
 	public DelhiPublicSchool(String std_name, String classname) {
+			
 		super(std_name, classname);
+		
+		this.classname="FGH";
 		
 	}	
 	
