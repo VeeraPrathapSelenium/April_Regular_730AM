@@ -22,6 +22,7 @@ public class ReadExcelFile {
 	
 	public ReadExcelFile(String path) throws IOException
 	{
+		System.out.println("Loading excel file .......");
 		this.path=path;
 		
 		File f=new File(path);
@@ -29,6 +30,7 @@ public class ReadExcelFile {
 		FileInputStream fis=new FileInputStream(f);
 		
 		wrkbk=new XSSFWorkbook(fis);
+		System.out.println("Excel File is loaded sucessfully");
 	}
 	
 	public static int getRowCount(String sheetname)
@@ -45,7 +47,7 @@ public class ReadExcelFile {
 		return sheet.getRow(rowcount).getPhysicalNumberOfCells();
 	}
 	
-	public static int searchTestCase(String sheetname,String classname)
+	public static int searchTestCase(String sheetname,String testcasename)
 	{
 		int rowcount=getRowCount(sheetname);
 		
@@ -56,7 +58,7 @@ public class ReadExcelFile {
 			
 		String testcase=sheet.getRow(r).getCell(0).getStringCellValue();
 		
-		if(classname.equals(testcase.trim()))
+		if(testcasename.equals(testcase.trim()))
 		{
 			row= r;
 			break;
