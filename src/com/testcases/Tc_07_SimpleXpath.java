@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.readingexcel.ReadExcelFile;
 
-public class Tc_06_AbsXpath {
+public class Tc_07_SimpleXpath {
 
 	public static void main(String[] args) throws IOException {
 
@@ -37,7 +37,7 @@ String path="C:\\Users\\Hanshik\\Desktop\\Testadata.xlsx";
 		
 		String firstname=ReadExcelFile.getData("Data", "Tc_01", "FirstName");
 		
-		driver.findElement(By.id("FirstName")).sendKeys(firstname);
+		driver.findElement(By.xpath("(//a[normalize-space(text())='Computers'])[1]")).click();
 		
 		
 		

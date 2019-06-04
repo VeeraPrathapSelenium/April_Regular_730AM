@@ -20,8 +20,9 @@ public class Tc_01 {
 		
 		data=ReadExcelFile.getData("Data", "Tc_05", "Dateofbirth");
 		
+		String url=ReadExcelFile.getData("Data", "Tc_01", "url");
 		
-		System.out.println("The dateofbirth test data is "+data);
+		System.out.println("Url of the application is "+url);
 		
 		
 		

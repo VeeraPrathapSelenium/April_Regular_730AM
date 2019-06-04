@@ -1,16 +1,19 @@
 package com.testcases;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.readingexcel.ReadExcelFile;
 
-public class Tc_06_AbsXpath {
+public class Tc_10_CSS {
 
 	public static void main(String[] args) throws IOException {
+
 
 String path="C:\\Users\\Hanshik\\Desktop\\Testadata.xlsx";
 		
@@ -30,14 +33,14 @@ String path="C:\\Users\\Hanshik\\Desktop\\Testadata.xlsx";
 		
 		driver.manage().window().maximize();
 		
-		// identify using abs xpath
-		
-
 		
 		
-		String firstname=ReadExcelFile.getData("Data", "Tc_01", "FirstName");
+		driver.findElement(By.cssSelector("input[id='FirstName']")).sendKeys("hello");;
 		
-		driver.findElement(By.id("FirstName")).sendKeys(firstname);
+		
+		List<WebElement> alloption=driver.findElements(By.cssSelector("select[name='DateOfBirthDay']>option"));
+		
+		System.out.println(alloption.size());
 		
 		
 		

@@ -1,29 +1,57 @@
 package com.testcases;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Tc_02 {
+public class Tc_02 extends GenericFunctions{
 	
 	public static void main(String[] args) {
 		
+		String url="http://www.google.com";
 		
-		// for launching chrome browser
+		GenericFunctions generic=new GenericFunctions();
+		boolean status=generic.launchApplication(url);
 		
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		// check browser status
+		if(status)
+		{
+			IphoneX_SearchPrice iphone=new IphoneX_SearchPrice();
+			status=iphone.searchPhone("i phone x");
+			
+			if(status)
+			{
+				status=iphone.getSearchResults("bestbuy");
+				
+				while(! status)
+				{
+					generic.scrollDown();
+					
+					iphone.click_Next();
+					
+					status=iphone.getSearchResults("best");
+					
+					
+				}
+			
+				status=iphone.verifyCountry();
+				
+				if(status) {
+					status=iphone.printPrice();
+					
+					generic.closeApp();
+				}
+				
+				
+				
+			}
+			
+		}
 		
-		// parent p=new child();
-		WebDriver driver=new ChromeDriver();
-		
-		driver.get("http://demo.nopcommerce.com/register");
-		
-		driver.manage().window().maximize();
-		
-		// enter data into firstname
-		
-		driver.findElement(By.id("FirstName")).sendKeys("FirstName");
-		
+				
 		
 	}
 
